@@ -6,14 +6,25 @@
   <title>Kalendarz Adwentowy - Wpisz Kod</title>
   <style>
     body {
-      background: url('swiateczne-tlo.mp4') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+      margin: 0;
+      padding: 0;
       font-family: 'Arial', sans-serif;
       text-align: center;
+      color: white;
+    }
+    .video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
     }
     .container {
       margin-top: 20%;
+      z-index: 1;
+      position: relative;
     }
     input[type="text"] {
       padding: 10px;
@@ -43,6 +54,12 @@
   </style>
 </head>
 <body>
+  <!-- Background video -->
+  <video autoplay muted loop class="video-background">
+    <source src="https://bgi13.github.io/adwentowylink/swiateczne-tlo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
   <div class="container">
     <h1>Wpisz kod dostępu</h1>
     <form id="form">
@@ -56,11 +73,24 @@
   <canvas class="snow"></canvas>
 
   <script>
-    const validCodes = ["swiatecznycud", "mikolajprzychodzi", "prezentypodchoinka", "radosnychswiat", "magiaswiateczna", "gwiazdkazbliskimi", "pierniczki", "bozenarodzenie", "swiateczneciasteczka", "choinkarozswietlona", "cichanoc", "rodzinneswiatowanie", "oplatekwigilijny", "koledy", "grudniowamagia", "zimowyklimat", "kominekiswieta", "sniegzaoknem", "prezentypoddrzewkiem", "swiatecznezyczenia", "radoscodswieta", "mikolajprzynosiprezenty", "wigilijnawieczerza", "magicznagwiazda", "zyczenia", "choinkazapachlasu", "swiatecznaherbata", "rozgrzewajacykominek", "zimowaatmosfera", "zimabozonarodzeniowa", "noworocznyprezent"];
- // Lista poprawnych kodów
+    const validCodes = [
+      "swiatecznycud", "mikolajprzychodzi", "prezentypodchoinka", 
+      "radosnychswiat", "magiaswiateczna", "gwiazdkazbliskimi", 
+      "pierniczki", "bozenarodzenie", "swiateczneciasteczka", 
+      "choinkarozswietlona", "cichanoc", "rodzinneswiatowanie", 
+      "oplatekwigilijny", "koledy", "grudniowamagia", 
+      "zimowyklimat", "kominekiswieta", "sniegzaoknem", 
+      "prezentypoddrzewkiem", "swiatecznezyczenia", 
+      "radoscodswieta", "mikolajprzynosiprezenty", 
+      "wigilijnawieczerza", "magicznagwiazda", 
+      "zyczenia", "choinkazapachlasu", "swiatecznaherbata", 
+      "rozgrzewajacykominek", "zimowaatmosfera", 
+      "zimabozonarodzeniowa", "noworocznyprezent"
+    ]; // Lista poprawnych kodów
+
     document.getElementById("form").addEventListener("submit", function (e) {
       e.preventDefault();
-      const kod = document.getElementById("kod").value.trim();
+      const kod = document.getElementById("kod").value.trim().toLowerCase();
       if (validCodes.includes(kod)) {
         window.location.href = `w.html?kod=${kod}`;
       } else {
