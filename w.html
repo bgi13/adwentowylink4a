@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -6,28 +7,42 @@
   <title>Kalendarz Adwentowy - Zadanie</title>
   <style>
     body {
-            background: url('https://cdn.pixabay.com/photo/2020/12/26/13/19/christmas-background-5861438_1280.jpg') no-repeat center center fixed;
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
       text-align: center;
       color: white;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .video-background {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
     }
     .container {
-      position: relative;
-      top: 20%;
-      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       z-index: 1;
     }
-    .container h1 {
+    h1 {
       font-size: 2em;
       text-shadow: 2px 2px 5px #000;
+      margin-bottom: 20px;
     }
     .gift {
       width: 200px;
       cursor: pointer;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
     .gift:hover {
       transform: scale(1.1);
@@ -43,6 +58,16 @@
     .message.visible {
       opacity: 1;
       transform: scale(1);
+      animation: pulse 3s ease-in-out infinite; /* Dodano animację w pętli */
+    }
+    /* Kluczowe klatki animacji pulsowania */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
     }
     .snow {
       position: fixed;
@@ -56,6 +81,11 @@
   </style>
 </head>
 <body>
+  <!-- Background video -->
+  <video autoplay muted loop class="video-background">
+    <source src="swiateczne-tlo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="container">
     <h1>Zobacz wiadomość</h1>
@@ -85,15 +115,17 @@
       messageDiv.innerHTML = message;
     } else {
       messageDiv.innerHTML = "Nieznany kod.";
+      alert("😵 Został wpisany niepoprawny kod: " + kod + "\n Spróbuj zeskanować ponownie lub wpisz kod na głównej stronie. \n Pamiętaj że kody nie zawierają polskich znaków i spacji.")
     }
 
     document.getElementById("gift").addEventListener("click", function () {
-      this.style.transition = "transform 1.5s ease";
-      this.style.transform = "rotateY(180deg)";
+      const gift = this;
+      gift.style.opacity = '0'; // Powolne zanikanie prezentu
 
-      setTimeout(function () {
-        messageDiv.classList.add("visible"); // Dodaje klasę, by wiadomość się pojawiła
-      }, 1500); // Po obrocie prezentu
+      setTimeout(() => {
+        gift.style.display = 'none'; // Całkowite usunięcie prezentu po zaniku
+        messageDiv.classList.add("visible"); // Pokazanie wiadomości
+      }, 500);
     });
 
     // Snow effect script
