@@ -6,14 +6,23 @@
   <title>Kalendarz Adwentowy - Zadanie</title>
   <style>
     body {
-      background: url('https://cdn.pixabay.com/photo/2020/12/26/13/19/christmas-background-5861438_1280.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
+            background: url('https://cdn.pixabay.com/photo/2020/12/26/13/19/christmas-background-5861438_1280.jpg') no-repeat center center fixed;
+      margin: 0;
+      padding: 0;
       font-family: 'Arial', sans-serif;
       text-align: center;
+      color: white;
+      overflow: hidden;
     }
     .container {
-      margin-top: 20%;
+      position: relative;
+      top: 20%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    .container h1 {
+      font-size: 2em;
+      text-shadow: 2px 2px 5px #000;
     }
     .gift {
       width: 200px;
@@ -24,9 +33,16 @@
       transform: scale(1.1);
     }
     .message {
-      display: none;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 1s ease, transform 0.5s ease;
       font-size: 1.5em;
       margin-top: 20px;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .message.visible {
+      opacity: 1;
+      transform: scale(1);
     }
     .snow {
       position: fixed;
@@ -40,6 +56,7 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     <h1>Zobacz wiadomość</h1>
     <img src="prezent.png" alt="Prezent" class="gift" id="gift" />
@@ -61,20 +78,21 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const kod = urlParams.get('kod');
+    const messageDiv = document.getElementById('message');
     const message = zadania[kod];
 
     if (message) {
-      document.getElementById('message').innerHTML = message;
+      messageDiv.innerHTML = message;
     } else {
-      document.getElementById('message').innerHTML = "Nieznany kod.";
+      messageDiv.innerHTML = "Nieznany kod.";
     }
 
     document.getElementById("gift").addEventListener("click", function () {
-      const messageDiv = document.getElementById("message");
       this.style.transition = "transform 1.5s ease";
       this.style.transform = "rotateY(180deg)";
+
       setTimeout(function () {
-        messageDiv.style.display = "block";
+        messageDiv.classList.add("visible"); // Dodaje klasę, by wiadomość się pojawiła
       }, 1500); // Po obrocie prezentu
     });
 
