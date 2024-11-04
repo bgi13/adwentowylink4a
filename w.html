@@ -91,6 +91,11 @@
     <h1>Zobacz wiadomość</h1>
     <img src="prezent.png" alt="Prezent" class="gift" id="gift" />
     <div class="message" id="message">🎄 Wesołych Świąt! 🎄<br>Obejrzyj ten filmik:</div>
+    <!-- dla swiatecznycud -->
+    <a href="https://www.youtube.com/playlist?list=PL3N3gjLtxuU5rgLerKX-LU6Yz_--9jQso&jct=TW59szPXTOYG5zHe1Ad3Gw" target="_blank" id="specialButton" style="display: none;">
+  <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Otwórz YouTube</button>
+</a>
+
   </div>
 
   <!-- Snow effect -->
@@ -98,7 +103,7 @@
 
   <script>
     const zadania = {
-      "swiatecznycud": "🎁 Świąteczny cud: Dziś jest idealny dzień, aby podzielić się dobrem!",
+      "swiatecznycud": "🎁 Skomponuj swiąteczną playliste",
       "gwiazdkazbliskimi": "🎅 Mikołaj przychodzi: Sprawdź, czy zostawił coś pod choinką!",
       "prezentypodchoinka": "🎁 Prezenty pod choinką: Czas na rozpakowywanie prezentów!",
       "mikolajprzychodzi": "🎉 Radosnych Świąt: Spędź ten czas z bliskimi i ciesz się świąteczną atmosferą!",
@@ -126,6 +131,13 @@
       alert("😵 Został wpisany niepoprawny kod: " + kod + "\n Spróbuj zeskanować ponownie lub wpisz kod na głównej stronie. \n Pamiętaj że kody nie zawierają polskich znaków i spacji.")
     }
 
+    // Pokaż przycisk, jeśli kod jest "swiatecznycud"
+const specialButton = document.getElementById('specialButton');
+if (kod === 'swiatecznycud') {
+  specialButton.style.display = 'block';
+}
+
+    
     document.getElementById("gift").addEventListener("click", function () {
       const gift = this;
       gift.style.opacity = '0'; // Powolne zanikanie prezentu
