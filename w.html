@@ -94,6 +94,9 @@
     <!-- dla swiatecznycud -->
     <a href="https://www.youtube.com/playlist?list=PL3N3gjLtxuU5rgLerKX-LU6Yz_--9jQso&jct=TW59szPXTOYG5zHe1Ad3Gw" target="_blank" id="specialButton" style="display: none;">
   <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
+          <!-- dla choinkarozwietlona -->
+    <a href="https://salagier.pl/images/obrazki/krzyzowki_swiateczna_krzyzowka.jpg" target="_blank" id="specialButton2" style="display: none;">
+  <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
 </a>
 
   </div>
@@ -137,6 +140,11 @@ if (kod === 'swiatecznycud') {
   specialButton.style.display = 'block';
 }
 
+        // Pokaż przycisk, jeśli kod jest "choinkarozwietlona"
+const specialButton = document.getElementById('specialButton2');
+if (kod === 'choinkarozwietlona') {
+  specialButton.style.display = 'block';
+}
     
     document.getElementById("gift").addEventListener("click", function () {
       const gift = this;
