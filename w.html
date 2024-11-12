@@ -134,17 +134,19 @@
       alert("😵 Został wpisany niepoprawny kod: " + kod + "\n Spróbuj zeskanować ponownie lub wpisz kod na głównej stronie. \n Pamiętaj że kody nie zawierają polskich znaków i spacji.")
     }
 
-    // Pokaż przycisk, jeśli kod jest "swiatecznycud"
+// Pokaż przycisk, jeśli kod jest "swiatecznycud"
 const specialButton = document.getElementById('specialButton');
 if (kod === 'swiatecznycud') {
   specialButton.style.display = 'block';
 }
 
-        // Pokaż przycisk, jeśli kod jest "choinkarozwietlona"
-const specialButton = document.getElementById('specialButton2');
+// Pokaż przycisk, jeśli kod jest "choinkarozwietlona"
+// Zamiast deklarować zmienną 'specialButton' ponownie, przypisz do niej nową wartość
+const specialButton2 = document.getElementById('specialButton2');
 if (kod === 'choinkarozswietlona') {
-  specialButton.style.display = 'block';
+  specialButton2.style.display = 'block';
 }
+
     
     document.getElementById("gift").addEventListener("click", function () {
       const gift = this;
