@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -58,9 +57,8 @@
     .message.visible {
       opacity: 1;
       transform: scale(1);
-      animation: pulse 3s ease-in-out infinite; /* Dodano animację w pętli */
+      animation: pulse 3s ease-in-out infinite;
     }
-    /* Kluczowe klatki animacji pulsowania */
     @keyframes pulse {
       0%, 100% {
         transform: scale(1);
@@ -81,95 +79,102 @@
   </style>
 </head>
 <body>
-  <!-- Background video -->
   <video autoplay muted loop class="video-background">
     <source src="swiateczne-tlo.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
   <div class="container">
-    <h1>Zobacz wiadomość! Nacisnij w prezent</h1>
+    <h1>Zobacz wiadomość! Naciśnij w prezent</h1>
     <img src="prezent.png" alt="Prezent" class="gift" id="gift" />
-    <div class="message" id="message">🎄 Wesołych Świąt! 🎄<br>Obejrzyj ten filmik:</div>
-    <!-- dla swiatecznadekoracja -->
-    <a href="https://ekodziecko.com/swiecznik-z-mandarynki" target="_blank" id="specialButton" style="display: none;">
-  <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
-    <!-- dla swiatecznedokarmianie -->
-    <a href="https://ekodziecko.com/dom-i-ogrod/karmnik-dla-ptakow" target="_blank" id="specialButton2" style="display: none;">
-  <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
-          <!-- dla swiatecznynastroj -->
-    <a href="https://ekodziecko.com/dom-i-ogrod/karmnik-dla-ptakow" target="_blank" id="specialButton3" style="display: none;">
-  <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
-
-</a>
-
+    <div class="message" id="message">🎄 Wesołych Świąt! 🎄</div>
+    <a id="specialButton" style="display: none;" target="_blank">
+      <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
+    </a>
   </div>
 
-  <!-- Snow effect -->
   <canvas class="snow"></canvas>
 
   <script>
     const zadania = {
-      "swiatecznadekoracja": "🎁 Odliczamy do Świąt, czas na świąteczną dekorację. Udekoruj drzwi doswojego pokoju. Przygotuj świeczniki ze skórek mandarynek.",
-      "swiatecznedokarmianie": "🎅 Przygotuj zimowe przysmaki dla ptaszków/nakarm kaczki lub gołębie w parku tu znajdziesz pomysł na dokarmianie ptaków. ",
-      "swiatecznynastroj": "🎁 Zaśpiewaj wspólnie z koleżankami/kolegami",
-      "mikolajprzychodzi": "🎉 Podaruj komplement koledze/koleżance z klasy!",
-      "radosnychswiat": "✨ Naucz się spiewać wybraną kolędę!",
-      "magiaswiateczna": "🎁 Wymyśl wierszyk o świętach!",
-      "pierniczki": "🎅 Naucz się mówić ''Wesołych Świąt'' w kilku językach",
-      "rodzinneswiatowanie": "🎁 Przygotuj kartkę swiąteczną dla wybranego członka rodziny",
-      "swiateczneciasteczka": "🎉 Wspolnie z rodziną upiecz i ozdób ciasteczka",
-      "choinkarozswietlona": "✨ Rozwiąż swiąteczną krzyżówkę",
-      "cichanoc": "🎉Pomóz w porządkach swiątecznych",
-      "bozenarodzenie": "✨ Ubierz choinkę wspólnie z rodziną",
-      
-      // Dodaj pozostałe zadania
+      "swiatecznadekoracja": { 
+        message: "🎁 Odliczamy do Świąt, czas na świąteczną dekorację. Udekoruj drzwi do swojego pokoju. Przygotuj świeczniki ze skórek mandarynek.", 
+        link: "https://ekodziecko.com/swiecznik-z-mandarynki" 
+      },
+      "swiatecznedokarmianie": { 
+        message: "🎅 Przygotuj zimowe przysmaki dla ptaszków/nakarm kaczki lub gołębie w parku.", 
+        link: "https://ekodziecko.com/dom-i-ogrod/karmnik-dla-ptakow" 
+      },
+      "swiatecznynastroj": { 
+        message: "🎁 Zaśpiewaj wspólnie z koleżankami/kolegami.", 
+        link: "https://www.youtube.com/watch?v=E8gmARGvPlI" 
+      },
+      "pierniczki": { 
+        message: "🎄 Pomóż upiec świąteczne pierniczki. Wytnij 10 serduszek:)", 
+        link: "https://ekodziecko.com/pierniczki-dla-dzieci" 
+      },
+      "wspolnyprzedswiatecznyczas": { 
+        message: "🎅 Przygotuj kolację dla całej rodziny.", 
+        link: null 
+      },
+      "swiateczneporzadki": { 
+        message: "✨ Zrób porządek na swoim biurku/w pokoju.", 
+        link: null 
+      },
+      "dobregodnia": { 
+        message: "🎅 Naucz się mówić 'Wesołych Świąt' w kilku językach.", 
+        link: "https://www.youtube.com/watch?v=zP9qZDaosIs" 
+      },
+      "przeslawieniadzis": { 
+        message: "🎄 Kliknij w przycisk.", 
+        link: "https://i.pinimg.com/736x/07/98/21/07982135f70019d42beeecbe73340f24.jpg" 
+      },
+      "cosmilego": { 
+        message: "🎉 Podaruj komplement koledze/koleżance z klasy!", 
+        link: null 
+      },
+      "cichanoc": { 
+        message: "✨ Naucz się śpiewać wybraną kolędę.", 
+        link: null 
+      },
+      "swiatecznycud": { 
+        message: "🎁 Wymyśl wierszyk o świętach.", 
+        link: null 
+      },
+      "mikolajnadchodzi": { 
+        message: "🎅 Kliknij w przycisk.", 
+        link: "https://www.youtube.com/watch?v=rnAsh-0mWYA" 
+      }
     };
 
     const urlParams = new URLSearchParams(window.location.search);
     const kod = urlParams.get('kod');
     const messageDiv = document.getElementById('message');
-    const message = zadania[kod];
+    const specialButton = document.getElementById('specialButton');
 
-    if (message) {
-      messageDiv.innerHTML = message;
+    if (zadania[kod]) {
+      const zadanie = zadania[kod];
+      messageDiv.innerHTML = zadanie.message;
+
+      if (zadanie.link) {
+        specialButton.href = zadanie.link;
+        specialButton.style.display = 'block';
+      }
     } else {
       messageDiv.innerHTML = "Nieznany kod.";
-      alert("😵 Został wpisany niepoprawny kod: " + kod + "\n Spróbuj zeskanować ponownie lub wpisz kod na głównej stronie. \n Pamiętaj że kody nie zawierają polskich znaków i spacji.")
+      alert("😵 Niepoprawny kod: " + kod + ". Spróbuj ponownie.");
     }
 
-// Pokaż przycisk, jeśli kod jest "swiatecznadekoracja"
-const specialButton = document.getElementById('specialButton');
-if (kod === 'swiatecznadekoracja') {
-  specialButton.style.display = 'block';
-}
-
-// Pokaż przycisk, jeśli kod jest "swiatecznedokarmianie"
-// Zamiast deklarować zmienną 'specialButton' ponownie, przypisz do niej nową wartość
-const specialButton2 = document.getElementById('specialButton2');
-if (kod === 'swiatecznedokarmianie') {
-  specialButton2.style.display = 'block';
-}
-
-    // Pokaż przycisk, jeśli kod jest "swiatecznynastroj"
-// Zamiast deklarować zmienną 'specialButton' ponownie, przypisz do niej nową wartość
-const specialButton2 = document.getElementById('specialButton3');
-if (kod === 'swiatecznynastroj') {
-  specialButton2.style.display = 'block';
-}
-
-    
     document.getElementById("gift").addEventListener("click", function () {
       const gift = this;
-      gift.style.opacity = '0'; // Powolne zanikanie prezentu
+      gift.style.opacity = '0';
 
       setTimeout(() => {
-        gift.style.display = 'none'; // Całkowite usunięcie prezentu po zaniku
-        messageDiv.classList.add("visible"); // Pokazanie wiadomości
+        gift.style.display = 'none';
+        messageDiv.classList.add("visible");
       }, 500);
     });
 
-    // Snow effect script
     function snowEffect() {
       const canvas = document.querySelector('.snow');
       const ctx = canvas.getContext('2d');
