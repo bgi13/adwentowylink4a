@@ -91,12 +91,16 @@
     <h1>Zobacz wiadomość! Nacisnij w prezent</h1>
     <img src="prezent.png" alt="Prezent" class="gift" id="gift" />
     <div class="message" id="message">🎄 Wesołych Świąt! 🎄<br>Obejrzyj ten filmik:</div>
-    <!-- dla swiatecznycud -->
-    <a href="https://www.youtube.com/playlist?list=PL3N3gjLtxuU5rgLerKX-LU6Yz_--9jQso&jct=TW59szPXTOYG5zHe1Ad3Gw" target="_blank" id="specialButton" style="display: none;">
+    <!-- dla swiatecznadekoracja -->
+    <a href="https://ekodziecko.com/swiecznik-z-mandarynki" target="_blank" id="specialButton" style="display: none;">
   <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
-          <!-- dla choinkarozswietlona -->
-    <a href="https://wordwall.net/pl/resource/82159765/bo%c5%bcenarodzeniekrzy%c5%bc%c3%b3wka" target="_blank" id="specialButton2" style="display: none;">
+    <!-- dla swiatecznedokarmianie -->
+    <a href="https://ekodziecko.com/dom-i-ogrod/karmnik-dla-ptakow" target="_blank" id="specialButton2" style="display: none;">
   <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
+          <!-- dla swiatecznynastroj -->
+    <a href="https://ekodziecko.com/dom-i-ogrod/karmnik-dla-ptakow" target="_blank" id="specialButton3" style="display: none;">
+  <button style="padding: 10px 20px; font-size: 1em; margin-top: 15px; cursor: pointer;">Przycisk</button>
+
 </a>
 
   </div>
@@ -106,9 +110,9 @@
 
   <script>
     const zadania = {
-      "swiatecznycud": "🎁 Skomponuj swiąteczną playliste: Nacisnij przycisk ponizej i dodawaj piosenki z youtuba! (Musisz być zalogowany na konto)",
-      "gwiazdkazbliskimi": "🎅 Poznaj bozonarodzeniowe zwyczaje w innych krajach!",
-      "prezentypodchoinka": "🎁 Napisz list do świętego mikołaja!",
+      "swiatecznadekoracja": "🎁 Odliczamy do Świąt, czas na świąteczną dekorację. Udekoruj drzwi doswojego pokoju. Przygotuj świeczniki ze skórek mandarynek.",
+      "swiatecznedokarmianie": "🎅 Przygotuj zimowe przysmaki dla ptaszków/nakarm kaczki lub gołębie w parku tu znajdziesz pomysł na dokarmianie ptaków. ",
+      "swiatecznynastroj": "🎁 Zaśpiewaj wspólnie z koleżankami/kolegami",
       "mikolajprzychodzi": "🎉 Podaruj komplement koledze/koleżance z klasy!",
       "radosnychswiat": "✨ Naucz się spiewać wybraną kolędę!",
       "magiaswiateczna": "🎁 Wymyśl wierszyk o świętach!",
@@ -134,16 +138,23 @@
       alert("😵 Został wpisany niepoprawny kod: " + kod + "\n Spróbuj zeskanować ponownie lub wpisz kod na głównej stronie. \n Pamiętaj że kody nie zawierają polskich znaków i spacji.")
     }
 
-// Pokaż przycisk, jeśli kod jest "swiatecznycud"
+// Pokaż przycisk, jeśli kod jest "swiatecznadekoracja"
 const specialButton = document.getElementById('specialButton');
-if (kod === 'swiatecznycud') {
+if (kod === 'swiatecznadekoracja') {
   specialButton.style.display = 'block';
 }
 
-// Pokaż przycisk, jeśli kod jest "choinkarozwietlona"
+// Pokaż przycisk, jeśli kod jest "swiatecznedokarmianie"
 // Zamiast deklarować zmienną 'specialButton' ponownie, przypisz do niej nową wartość
 const specialButton2 = document.getElementById('specialButton2');
-if (kod === 'choinkarozswietlona') {
+if (kod === 'swiatecznedokarmianie') {
+  specialButton2.style.display = 'block';
+}
+
+    // Pokaż przycisk, jeśli kod jest "swiatecznynastroj"
+// Zamiast deklarować zmienną 'specialButton' ponownie, przypisz do niej nową wartość
+const specialButton2 = document.getElementById('specialButton3');
+if (kod === 'swiatecznynastroj') {
   specialButton2.style.display = 'block';
 }
 
